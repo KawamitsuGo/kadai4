@@ -10,8 +10,6 @@ if (!$link) {
 
 mysqli_set_charset($link,"utf8");
 
-$name = $_POST["name"];
-
 
 
 $id = mysqli_query($link,"SELECT id FROM `thread` WHERE 1 ORDER BY id DESC LIMIT 1");
@@ -38,20 +36,39 @@ foreach ($id as $row){
 
 
 
-
-
 echo "<br/><br/>";
 
 $result = mysqli_query($link,"SELECT * FROM `thread` ");
-foreach ($result as $row){
-    foreach ($row as $data){
-        echo $data.",";
-    }
-    echo "<br>";
+foreach($result as $row){
+    $id = current($row);
+    next($row);
+    echo "<a href=thread-detail.php?id=$id>".current($row)."</a>";
+    next($row);
+    echo "　　".current($row);
+    echo "<br/>";
     echo PHP_EOL;
 }
 
-var_dump($result);
+function get_first_element($arr) {
+    // 引数として受け取った時点で常に内部ポインタは初期化されている！
+    return current($arr);
+}
+
+
+
+echo"<br/><br/>";
+
+//$result = mysqli_query($link,"SELECT * FROM `thread` ");
+//foreach($result as $row){
+//    foreach ($row as $data){
+//        echo $data.",";
+//    }
+//    echo "<br>";
+//    echo PHP_EOL;
+//}
 
 mysqli_close($link);
+
 ?>
+
+<a href= index.php> トップに戻る</a>

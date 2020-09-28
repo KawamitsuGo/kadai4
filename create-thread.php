@@ -1,7 +1,7 @@
 <?php
 
 header( "HTTP/1.1 301 Moved Permanently" ); 
-//header("Location: create-result.php");
+header("Location: thread-index.php");
 
 $link = mysqli_connect("localhost:3306", "root", "", "nichan");
 
@@ -14,7 +14,9 @@ if (!$link) {
 
 mysqli_set_charset($link,"utf8");
 
+
 $name = $_GET["name"];
+
 
 mysqli_query($link,"INSERT INTO `thread` (`id`, `name`,`time`) VALUES (NULL, '$name', current_timestamp());");
 
@@ -30,7 +32,6 @@ foreach ($id as $row){
     echo PHP_EOL;
 }
 
-
 //create文のSQL
 
 //CREATE TABLE t1 (
@@ -39,8 +40,6 @@ foreach ($id as $row){
 //    index(id),
 //    ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 // );
-
-
 
 
 // sql to create table
@@ -59,7 +58,6 @@ if ($link->query($sql) === TRUE) {
 }
 
 
-
 echo "<br/><br/>";
 
 $result = mysqli_query($link,"SELECT * FROM `thread` ");
@@ -75,4 +73,6 @@ var_dump($result);
 
 mysqli_close($link);
 exit;
+
+
 ?>

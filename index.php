@@ -10,5 +10,7 @@
     <input type="text" name="name" placeholder="スレッド名"/>
     <input type="submit" name="送信"/>
 </form>
+<br/><br/>
+<a href=thread-index.php>スレッド一覧へ</a>
 </body>
 </html>
