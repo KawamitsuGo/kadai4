@@ -14,16 +14,13 @@ if (!$link) {
 
 mysqli_set_charset($link,"utf8");
 
-
 $name = $_GET["name"];
-
 
 mysqli_query($link,"INSERT INTO `thread` (`id`, `name`,`time`) VALUES (NULL, '$name', current_timestamp());");
 
 $id = mysqli_query($link,"SELECT id FROM `thread` WHERE 1 ORDER BY id DESC LIMIT 1");
 
-
-//改良する
+//改良する.
 foreach ($id as $row){
     foreach ($row as $data){
         $set = "thread".(string)$data;
@@ -31,15 +28,6 @@ foreach ($id as $row){
     echo "<br>";
     echo PHP_EOL;
 }
-
-//create文のSQL
-
-//CREATE TABLE t1 (
-//    id int auto_increment,
-//     name varchar(10),
-//    index(id),
-//    ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-// );
 
 
 // sql to create table
@@ -56,20 +44,6 @@ if ($link->query($sql) === TRUE) {
 } else {
     echo "Error creating table: " . $link->error;
 }
-
-
-echo "<br/><br/>";
-
-$result = mysqli_query($link,"SELECT * FROM `thread` ");
-foreach ($result as $row){
-    foreach ($row as $data){
-        echo $data.",";
-    }
-    echo "<br>";
-    echo PHP_EOL;
-}
-
-var_dump($result);
 
 mysqli_close($link);
 exit;

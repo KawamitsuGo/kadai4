@@ -2,14 +2,17 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>25000ちゃんねる</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body bgcolor="efefef">
 <h1>掲示板</h1>
-<form action="create.php" method="GET">
+<div class="cp_iptxt">
+<form action="create-thread.php" method="GET">
     <input type="text" name="name" placeholder="スレッド名"/>
     <input type="submit" name="送信"/>
 </form>
+</div>
 <br/><br/>
 <a href=thread-index.php>スレッド一覧へ</a>
 </body>

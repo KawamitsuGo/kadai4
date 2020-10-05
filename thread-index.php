@@ -1,3 +1,5 @@
+<body bgcolor="efefef">
+
 <?php
 $link = mysqli_connect("localhost:3306", "root", "", "nichan");
 
@@ -9,8 +11,6 @@ if (!$link) {
 }
 
 mysqli_set_charset($link,"utf8");
-
-
 
 $id = mysqli_query($link,"SELECT id FROM `thread` WHERE 1 ORDER BY id DESC LIMIT 1");
 
